@@ -16,7 +16,7 @@ app.get('/vagas', async (req, res) => {
       const conn = await pool.getConnection();
       const [rows, fields] = await conn.query('SELECT * FROM vagas WHERE encerrada = 0');
       conn.release();
-      res.send(rows);
+      res.json(rows);
   } catch (error) {
       console.error(error);
       res.status(500).send('Erro ao buscar vagas');
@@ -29,7 +29,7 @@ app.get('/vagas/abertas', async (req, res) => {
       const conn = await pool.getConnection();
       const [rows, fields] = await conn.query('SELECT * FROM vagas WHERE encerrada = 0');
       conn.release();
-      res.send(rows);
+      res.json(rows);
   } catch (error) {
       console.error(error);
       res.status(500).send('Erro ao buscar vagas');
@@ -42,7 +42,7 @@ app.get('/vagas/encerradas', async (req, res) => {
       const conn = await pool.getConnection();
       const [rows, fields] = await conn.query('SELECT * FROM vagas WHERE encerrada = 1');
       conn.release();
-      res.send(rows);
+      res.json(rows);
   } catch (error) {
       console.error(error);
       res.status(500).send('Erro ao buscar vagas');
@@ -58,7 +58,7 @@ app.post('/vagas', async (req, res) => {
       const values = [titulo, descricao, tipo, localizacao];
       const [result] = await conn.query(query, values);
       conn.release();
-      res.send(result);
+      res.json(result);
   } catch (error) {
       console.error(error);
       res.status(500).send('Erro ao cadastrar vaga');
@@ -73,7 +73,7 @@ app.delete('/vagas/:id', async (req, res) => {
       const query = 'DELETE FROM vagas WHERE id = ?';
       const [result] = await conn.query(query, id);
       conn.release();
-      res.send(result);
+      res.json(result);
   } catch (error) {
       console.error(error);
       res.status(500).send('Erro ao excluir vaga');
@@ -90,7 +90,7 @@ app.put('/vagas/:id', async (req, res) => {
       const values = [titulo, descricao, tipo, localizacao, encerrada, id];
       const [result] = await conn.query(query, values);
       conn.release();
-      res.send(result);
+      res.json(result);
   } catch (error) {
       console.error(error);
       res.status(500).send('Erro ao atualizar vaga');

@@ -2,7 +2,7 @@
   "name": "api-receitas",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/trezeguetdev/api-receitas.git",
+  "repository": "https://github.com/ClaushSouza/ApiEmpregos",
   "author": "Gustavo Menezes <verboty@gmail.com>",
   "license": "MIT",
   "scripts": {
